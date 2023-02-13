@@ -1,0 +1,49 @@
+<!-- here we install express package to create server and going to connect frontend with metamask -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METAMASKWALLETCONNECTION</title>
+</head>
+<style> 
+body{
+    color:black;
+    background-color: red;
+    font-size: 33px;
+    text-align: center;
+
+}
+button{
+    color:black;
+    background-color: rgb(253, 249, 249);
+}
+
+
+</style>
+<body>
+    <button onclick="ConnectToMetamask()">connect to metamask</button>
+     <h1 id="address"></h1>
+     <script>
+     let account;
+     const ConnectToMetamask= async()=>{
+       if(window.ethereum!== "undefined" ){
+        const accounts = await ethereum.request({method: "eth_requestAccounts"});
+        account = accounts[0];
+        // this account[0] will show the result of first account...
+        document.getElementById("address").innerHTML = account;
+       }
+       else{
+        document.getElementById('address').innerHTML = "please create metamask wallet account";
+        alert("create metamask account");
+       }
+
+
+
+     }
+
+     </script>
+</body>
+</html>
